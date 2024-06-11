@@ -1,0 +1,88 @@
+step 0 : 
+    - go on http://natas0.natas.labs.overthewire.org
+step 1 : 
+    - go to source code of http://natas0.natas.labs.overthewire.org
+step 2 : 
+    - go to source code of http://natas1.natas.labs.overthewire.org
+step 3 : 
+    - go on source code show an image in the path file/pixel.png
+    - go on the directory /file show a file called users.txt containing several passwords including for natas3
+step 4 : 
+    - visit robots.txt
+    - this shows another directory called /s3cr3t/
+    - that directory contain a file called users.txt containing the credentials of natas4
+step 5 : 
+    - intercept the request with burpsuite
+    - change the referer to http://natas5.natas.labs.overthewire.org/
+step 6 : 
+    - intercept the request with burpsuite
+    - change the cookie loggedin to 1
+step 7 : 
+    - Click on the view sourcecode
+    - there show that there is a page called includes/secret.inc
+    - show the source code of includes/secret.inc
+    - transmit the secret in includes/secret.inc to the form in the form on the main page
+step 8 : 
+    - viewing the source code indicate that the password is stored in /etc/natas_webpass/natas8
+    - exploit the lfi by visiting http://natas7.natas.labs.overthewire.org/index.php?page=../../../../../../../../../etc/natas_webpass/natas8
+step 9 : 
+    - Click on the view sourcecode
+    - there is a string called encodedSecret containing the value of the secret but is encodedSecret
+    - reverse the encoding by transforming the hexadecimal string to binary string, then reverse it and decode the base 64 resulting from it
+    - transmit the secret in the form on the main page
+step 10 : 
+    - exploit the command injection as there is no sanitization
+    - Click on the view sourcecode
+    - it says that any data transmited in a query as request of the needle will be transmited to passthru
+    - enter this input : blabla; cat /etc/natas_webpass/natas10; /dev/null
+step 11 : 
+    - the same as step 10 but there is filtering of these characters : ;|&
+    - # is not filtered so use # to comment the last thing
+    - enter this input : '' /etc/natas_webpass/natas11 #
+step 12 : 
+    - xor is a reversible operation
+    - xoring the input and output of the operation gives the key
+    - Click on the view sourcecode
+    - use the xor_encrypt function to xor the defaultdata and the cookie data to find the key
+    - use the key to xor the crafted data do set showpassword to yes
+    - resend the request in burpsuite with the crafted cookie
+step 13 : 
+    - create a web shell 
+    - upload the webshell
+    - change the value of filename in burpsuite
+    - use system command to show the content of /etc/natas_webpass/natas13 like cat
+step 14 : 
+    - intercept image in burpsuite
+    - upload a legit jpg image 
+    - change any filename to something.php
+    - remove the content of the image and replace it with a web shell
+    - use system command to show the content of /etc/natas_webpass/natas14 like cat
+step 15 : 
+    - the source code show that any data sent to the username and password are sent directly in the sql query. 
+    - send this in the form : username = '" or 1=1;-- ' and password = data
+step 16 : 
+    - like for step 15 but with boolean-based blind sqli
+    - use this command for sqlmap : sqlmap -u "http://natas15.natas.labs.overthewire.org/index.php?debug" --string="This user exists" --headers="Authorization: Basic bmF0YXMxNTpUVGthSTdBV0c0aURFUnp0QmNFeUtWN2tSWEgxRVpSQg==" --data "username=natas16"  --level=5 --risk=3 --batch -T users -C username,password --dump
+step 17 : 
+    - like in step 11, there is a grep command but need to run grep 2 time to get the password
+    - first, get all characters in the password with the first grep
+    - second, get the order of all characters with the second grep
+    - this should be automated with a script with python
+step 18 : 
+    - Like step 16 but is time based blind sqli
+    - use this command for sqlmap :  sqlmap -u "http://natas17.natas.labs.overthewire.org/index.php?debug" --headers="Authorization: Basic bmF0YXMxNzpYa0V1Q2hFMFNibktCdkgxUlU3a3NJYjl1dUxtSTdzZA==" --data "username=natas18"  --level=5 --risk=3 --batch -T users -C username,password --dump --technique=T --time-sec=5
+step 19 : 
+step 20 : 
+step 21 : 
+step 22 : 
+step 23 : 
+step 24 : 
+step 25 : 
+step 26 : 
+step 27 : 
+step 28 : 
+step 29 : 
+step 30 : 
+step 31 : 
+step 32 : 
+step 33 : 

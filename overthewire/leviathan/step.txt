@@ -1,0 +1,11 @@
+step 0 : 
+    ssh leviathan0@leviathan.labs.overthewire.org -p 2223
+step 1 : 
+    - cd .backup
+    - grep password *
+step 2 : 
+step 3 : 
+step 4 : 
+step 5 : 
+step 6 : 
+step 7 : 
